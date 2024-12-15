@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pour toi, mon amour</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            cursor: pointer; /* Change le curseur pour indiquer qu'un clic est possible */
+        }
+        h1 {
+            margin-top: 20px;
+            font-size: 3em;
+        }
+        .slideshow-container {
+            position: relative;
+            max-width: 80%;
+            margin: auto;
+            overflow: visible; /* Permet de voir les éléments qui dépassent */
+            display: flex;
+            align-items: center; /* Align images and roses horizontally */
+        }
+        .slides {
+            display: none;
+            width: 100%;
+            max-width: 600px; /* Ajuste la largeur de l'image */
+            height: auto;
+            margin: auto;
+        }
+        /* Positionnement des roses */
+        .roses-left, .roses-right {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px; /* Taille réduite des roses */
+            height: auto;
+            z-index: 10; /* Assurez-vous que les roses sont devant */
+            background-color: rgba(255, 0, 0, 0.5); /* Fond temporaire pour la visibilité */
+        }
+        .roses-left {
+            left: 0; /* Positionner la rose légèrement à gauche */
+        }
+        .roses-right {
+            right: 0; /* Positionner la rose légèrement à droite */
+        }
+        /* Cœurs */
+        .heart {
+            font-size: 4em; /* Taille des cœurs */
+            color: red;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+        .heart-left {
+            left: -70px; /* Espacement à gauche */
+        }
+        .heart-right {
+            right: -70px; /* Espacement à droite */
+        }
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            margin-top: -22px;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            user-select: none;
+        }
+        .prev {
+            left: 0;
+        }
+        .next {
+            right: 0;
+        }
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+        .music {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pour toi, mon amour, mon Anhydride 💘💕</h1>
+    <p>Parce que chaque jour avec toi est un cadeau 🌹</p>
+
+    <div class="slideshow-container">
+        <!-- Cœurs à gauche et à droite des images -->
+        <span class="heart heart-left">&#10084;</span>
+        <span class="heart heart-right">&#10084;</span>
+
+        <!-- Roses à gauche et à droite des images -->
+        <img class="roses-left" src="anhydride/rose.png" alt="Rose">
+        <img class="roses-right" src="anhydride/rose.png" alt="Rose">
+        
+        <!-- Diaporama -->
+        <img class="slides" src="anhydride/coeur1.png" alt="Coeur1">
+        <img class="slides" src="anhydride/fleur.png" alt="Fleur">
+        <img class="slides" src="anhydride/main.png" alt="Main">
+        <img class="slides" src="anhydride/jtaime1.png" alt="Jtaime1">
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
+    <div class="footer">
+        <p>Avec tout mon amour, pour toujours 💕</p>
+    </div>
+
+    <audio class="music" loop>
+        <source src="anhydride/music.mp3" type="audio/mpeg">
+        Votre navigateur ne supporte pas l'audio.
+    </audio>
+
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function plusSlides(n) {
+            slideIndex += n;
+            showSlides();
+        }
+
+        function showSlides() {
+            let slides = document.getElementsByClassName("slides");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex = (slideIndex >= slides.length) ? 0 : (slideIndex < 0) ? slides.length - 1 : slideIndex;
+            slides[slideIndex].style.display = "block";
+        }
+
+        setInterval(() => plusSlides(1), 5000); // Change image every 5 seconds
+
+        // Lancement de la musique dès que l'utilisateur clique sur la page
+        window.onclick = function() {
+            const audio = document.querySelector('audio');
+            audio.play();
+        };
+    </script>
+</body>
+</html>
